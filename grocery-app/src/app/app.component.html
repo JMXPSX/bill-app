@@ -1,0 +1,38 @@
+
+<!-- <app-header></app-header> -->
+<!-- <app-menu></app-menu> -->
+<!-- <div class="container m-5">
+    <router-outlet></router-outlet>
+</div> -->
+
+<!-- <app-footer></app-footer> -->
+
+<!-- <router-outlet></router-outlet>
+
+<footer class="footer">
+    <div class="container">
+        <span>All Rights Reserved 2019 @JavaGuides</span>
+    </div>
+</footer> -->
+
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+        <a class="nav-item nav-link" routerLink="/bills" routerLinkActive="active">Bills</a>
+        <a class="nav-item nav-link" routerLink="/items" routerLinkActive="active">Items</a>
+        <a class="nav-item nav-link" routerLink="/clerks" routerLinkActive="active">Clerks</a>        
+        <a class="nav-item nav-link" routerLink="/account/login" (click)="logout()">Logout</a>
+    </div>
+</nav>
+
+<div class="app-container" [ngClass]="{ 'bg-light':user }">
+    <alert></alert>
+    <router-outlet></router-outlet>
+</div>
+
+<div class="text-center mt-4">
+    <div class="container">
+        <span>All Rights Reserved 2019 @JavaGuides</span>
+    </div>
+</div>

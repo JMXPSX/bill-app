@@ -1,0 +1,26 @@
+<h1>Bills</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">ID</th>
+            <th style="width: 40%">Clerk</th>     
+            <th style="width: 30%">Action</th>       
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let bill of bills">
+            <td>{{bill.id}}</td>
+            <td>{{bill.clerk.name}}</td>            
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{bill.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deleteBill(bill.id)" class="btn btn-sm btn-danger btn-delete-item" [disabled]="bill.isDeleting">
+                    <span *ngIf="bill.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!bill.isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+       
+    </tbody>
+</table>

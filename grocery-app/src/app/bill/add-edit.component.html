@@ -1,0 +1,84 @@
+<h1 *ngIf="isAddMode">Add Bill</h1>
+<h1 *ngIf="!isAddMode">Edit Bill</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col-sm-6">
+
+            <div class="card">
+                <div class="card-body" formGroupName="clerk"> 
+                <label for="clerk">Clerk</label>
+                <select class="form-control" formControlName="id" [ngClass]="{ 'is-invalid': submitted && f.clerk.errors }" (change)="changeValue1($event.target.value)">  
+                    <option value="" hidden selected>Select a clerk</option>              
+                    <option *ngFor="let clerk of clerks"  value="{{clerk.id}}">{{clerk.name}}</option>
+                </select>
+                </div>            
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                <label >Item</label>
+                <select class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemList.errors }" (change)="changeValue2($event.target.value)">                
+                    <option *ngFor="let item of items" value="{{item.id}}">{{item.name}}</option>                
+                </select>
+
+                <label for="price">Price</label>
+                <input class="form-control" value="{{selectedItem.price}}" readonly/>
+
+                <label for="discounted">Discounted</label>
+                <input class="form-control" value="{{selectedItem.discounted}}" readonly/>
+
+                <label for="discountPercentage">Discount Percentage</label>
+                <input class="form-control" value="{{selectedItem.discountPercentage}}" readonly/>
+
+                <div class="form-group">
+                    <button (click)="addItemList()" class="btn btn-primary">            
+                        Add Item
+                    </button>
+                </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr> 
+                                <th style="width: 25%">Name</th>
+                                <th style="width: 25%">Price</th>
+                                <th style="width: 25%">Discounted</th>
+                                <th style="width: 25%">Discount Percentage</th>                                
+                            </tr>
+                        </thead>
+                        <tbody >
+
+                            <tr *ngFor="let orderItem of orderObj.itemList" >
+                                <!-- <td>{{item.id}}</td> -->
+                                <td>{{orderItem.name}}</td>
+                                <td>{{orderItem.price}}</td>
+                                <td>{{orderItem.discounted}}</td>
+                                <td>{{orderItem.discountPercentage}}</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="form-group">
+                    <a routerLink="/bills" class="btn btn-link">Cancel</a>
+                    <button [disabled]="loading" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Save
+                    </button>
+                    
+                </div>
+
+            </div>            
+
+        </div>        
+    </div>
+    
+</form>

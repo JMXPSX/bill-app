@@ -1,0 +1,57 @@
+<!-- <div class="container col-lg-6">
+    <h1 class="text-center">Login</h1>
+    <div class="card">
+      <div class="card-body">
+        <form class="form-group">
+          <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+          <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+          <div class="form-group">
+            <label for="email">User Name :</label>
+            <input type="text" class="form-control" id="username" [(ngModel)]="username" placeholder="Enter User Name"
+              name="username">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" [(ngModel)]="password" id="password" placeholder="Enter password"
+              name="password">
+          </div>
+          <button (click)=handleLogin() class="btn btn-success">Login</button>
+        </form>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="row login-container animated fadeInLeft fast">
+    <div class="col-6">
+      <!-- <form #loginForm="ngForm" (ngSubmit)="login(loginForm)"> -->
+        <!-- <h1 class="text-center"><i class="fas fa-rocket"></i> HeroApp</h1> -->
+        <h2>Login</h2>
+        <hr />
+
+        <div class="form-group">
+          <label>Username</label>
+          <!-- <input type="username" class="form-control" [(ngModel)]="user.username" name="username" #username="ngModel" required/>
+          <span class="text-danger animated fadeIn" *ngIf="loginForm.submitted && username.errors">
+            <span *ngIf="username.errors['required']">Uername Required</span>
+            <span *ngIf="username.errors['username']">Username error</span>
+          </span> -->
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <!-- <input type="password" class="form-control" [(ngModel)]="user.password" name="password" #password="ngModel" required minlength="6" />
+          <span class="text-danger animated fadeIn" *ngIf="loginForm.submitted && password.errors">
+            <span *ngIf="password.errors['required']">Password required error</span>
+            <span *ngIf="password.errors['minlength']">Password min length error</span>
+          </span> -->
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <!-- <a class="register-link ml-1" routerLink="/register">¿No tienes cuenta? Registrate.</a> -->
+        </div>
+
+      <!-- </form> -->
+    </div>
+  </div>
+

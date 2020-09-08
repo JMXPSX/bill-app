@@ -1,0 +1,35 @@
+<h1>Items</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add Item</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 20%">ID</th>
+            <th style="width: 20%">Name</th>
+            <th style="width: 20%">Price</th>
+            <th style="width: 20%">Discounted</th>
+            <th style="width: 20%">Discount Percentage</th>
+            <th style="width: 20%">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.discounted}}</td>
+            <td>{{item.discountPercentage}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{item.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deleteItem(item.id)" class="btn btn-sm btn-danger btn-delete-item" [disabled]="item.isDeleting">
+                    <span *ngIf="item.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!item.isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+        <!-- <tr *ngIf="!items">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr> -->
+    </tbody>
+</table>
